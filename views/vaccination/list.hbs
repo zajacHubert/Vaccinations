@@ -1,0 +1,21 @@
+<h2>Lista szczepionek</h2>
+<ul>
+    {{#each vaccinationList}}
+        <li>
+           {{this.name}} ({{this.count}} szt.)
+        </li>
+    {{/each}}
+</ul>
+
+<h2>Dodaj szczepionkę do listy</h2>
+<form class="add-form" action="/vaccination" method="POST">
+    <label>
+        Nazwa
+        <input type="text" name="name">
+    </label>
+    <label>
+        Ilość [szt.]
+        <input type="number" name="count">
+    </label>
+    <button class="add">Dodaj</button>
+</form>

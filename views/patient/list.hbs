@@ -1,0 +1,43 @@
+<h2>Lista pacjentów</h2>
+
+<ul>
+    {{#each patientList}}
+        <li>
+            <form action="/patient/vaccination/{{this.id}}?_method=PATCH" method="POST">
+                <label>
+                    {{this.lastName}}  {{this.name}}
+                    <select name="vaccinationId">
+                        <option value="">Brak</option>
+                        {{#each ../vaccinationList}}
+                            <option value="{{this.id}}"
+                                    {{#if (equals this.id ../vaccinationId)}}selected="selected"{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </label>
+                <button class="save">Zapisz</button>
+            </form>
+        </li>
+    {{/each}}
+</ul>
+
+<h2>Dodaj pacjenta do listy</h2>
+<form class="add-form" action="/patient" method="POST">
+    <label>
+        Imię
+        <input type="text" name="name">
+    </label>
+    <label>
+        Nazwisko
+        <input type="text" name="lastName">
+    </label>
+
+    <button class="add">Dodaj</button>
+</form>
+
+
+
+
+
+
+
+
